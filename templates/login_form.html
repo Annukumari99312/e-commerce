@@ -1,0 +1,16 @@
+	<!-- login-page -->
+	<div class="login-page col-md-12">
+		<div class="container  col-md-12">
+			<div class="login-body">
+				<form action="{% if action_url %} {{ action_url }} {% else %} {% url 'accounts:login' %} {% endif %}" method="POST">
+                    {% csrf_token %}
+                    {% if next_url %}
+					<input type="hidden"  name="next" value="{{ next_url }}">
+                    {% endif %}
+					{{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-success">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- //login-page -->

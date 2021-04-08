@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+	<!-- login-page -->
+	<div class="login-page">
+		<div class="container">
+			{% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+			<h3 class="w3ls-title w3ls-title1">Login to your account</h3>
+
+			<div class="login-body">
+				<form method="POST">{% csrf_token %}
+					{% if next_url %}
+            		<input type="hidden" name="next" value="{{ next_url }}">
+        			{% endif %}
+					{{ form.as_p }}
+			        <button type="submit" class="btn btn-success">Login</button>
+				</form>
+			</div>  
+			<h6> Not a Member? <a href="{% url 'accounts:register' %}">Sign Up Now »</a> </h6>
+		</div>
+	</div>
+	<!-- //login-page --> 
+{% endblock content %}

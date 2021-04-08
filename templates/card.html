@@ -1,0 +1,11 @@
+<div class="agile-products">
+							<div class="new-tag"><h6>20%<br>Off</h6></div>
+                            {% if instance.image %}
+							<a href="{{ instance.get_absolute_url }}"><img src="{{ instance.image.url }}" class="img-responsive" alt="{{ instance.title }}"></a>
+                            {% endif %}
+							<div class="agile-product-text">
+								<h5><a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a></h5>
+                                {% include "update-cart.html" with product=instance cart=cart %}
+								<h6><del>$200</del> $100</h6>
+							</div>
+						</div>
